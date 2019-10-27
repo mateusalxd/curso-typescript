@@ -8,3 +8,6 @@
 
 # Node.js
 node_modules/*
+
+# Arquivos compilados
+app/js/*
