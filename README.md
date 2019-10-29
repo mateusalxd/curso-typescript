@@ -46,3 +46,7 @@ ou
 // desta maneira evita problema com JSX
 let _inputData = document.querySelector('#data') as HTMLInputElement;
 ```
+
+- arrays podem ser declarados utilizando `Array<Classe>` ou `Classe[]`
+- pode ser informado em um método qual seu tipo de retorno, semelhante ao que é feito com variáveis: `paraArray(): Negociacao[] { }`
+- se `noImplicitAny` estiver habilitado, pode ser utilizada a inferência de tipos na declaração da variável: `private _negociacoes = new Negociacoes();`
