@@ -50,3 +50,24 @@ let _inputData = document.querySelector('#data') as HTMLInputElement;
 - arrays podem ser declarados utilizando `Array<Classe>` ou `Classe[]`
 - pode ser informado em um método qual seu tipo de retorno, semelhante ao que é feito com variáveis: `paraArray(): Negociacao[] { }`
 - se `noImplicitAny` estiver habilitado, pode ser utilizada a inferência de tipos na declaração da variável: `private _negociacoes = new Negociacoes();`
+- herança em TypeScript é igual ao JavaScript, utilizando `class MensagemView extends View { }`, talvez esse seja uma momento para utilizar **protected**
+- é possível utilizar `generics` através dos colchetes angulares na declaração da classe
+
+```typescript
+class View<T> {
+
+    ...
+
+    update(modelo: T): void {
+        ...
+    }
+
+    template(modelo: T): string {
+
+        ...
+    }
+
+}
+```
+
+- para criar classes ou métodos abstratos, utiliza-se a palavra chave `abstract`
