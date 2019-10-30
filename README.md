@@ -71,3 +71,21 @@ class View<T> {
 ```
 
 - para criar classes ou métodos abstratos, utiliza-se a palavra chave `abstract`
+- para utilizar bibliotecas de terceiros com TypeScript e não ter problemas, é necessário um *TypeScript Declaration File*, que pode ser obtido com
+
+```shellscript
+# informar a biblioteca necessária
+npm install @types/jquery
+```
+
+ou
+
+```typescript
+// contorno para evitar mensagem de erro, porém não é recomendado por perder as funcionalidades do TypeScript
+// utilizado $ para exemplificar o jQuery
+declare var $: any;
+```
+
+## Referências
+
+[Curso de TypeScript parte 1: Evoluindo seu Javascript](https://www.alura.com.br/curso-online-typescript-parte1)
