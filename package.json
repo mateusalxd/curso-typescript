@@ -20,6 +20,7 @@
   "homepage": "https://github.com/mateusalxd/curso-typescript#readme",
   "dependencies": {},
   "devDependencies": {
+    "@types/jquery": "^2.0.42",
     "typescript": "^3.6.4"
   }
 }
