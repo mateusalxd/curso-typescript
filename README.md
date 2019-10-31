@@ -209,6 +209,15 @@ export function logarTempoDeExecucao(emSegundos: boolean = false) {
 }
 ```
 
+- é possível criar interfaces em TypeScript para poder ser utilizado na chamada de API externas, definindo qual o retorna da mesma
+
+```typescript
+export interface NegociacaoParcial {
+    vezes: number,
+    montante: number;
+}
+```
+
 ## Referências
 
 [Curso de TypeScript parte 1: Evoluindo seu Javascript](https://www.alura.com.br/curso-online-typescript-parte1)
