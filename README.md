@@ -3,7 +3,7 @@
 - o código em TypeScript precisa ser compilado para JavaScript para ser interpretado
 - as configurações de compilação do TypeScript ficam no arquivo `tsconfig.json`
 - é possível utilizar modificadores de acesso como: **public**, **private** e **protected**, sendo **public** o padrão
-- o típo da variável é definido logo após seu nome, se o mesmo não for informado, será considerado implicitamente o tipo `any`, que pode representar qualquer coisa
+- o tipo da variável é definido logo após seu nome, se o mesmo não for informado, será considerado implicitamente o tipo `any`, que pode representar qualquer coisa
 
 ```typescript
 private minhaVariavel: any;
@@ -50,7 +50,7 @@ let _inputData = document.querySelector('#data') as HTMLInputElement;
 - arrays podem ser declarados utilizando `Array<Classe>` ou `Classe[]`
 - pode ser informado em um método qual seu tipo de retorno, semelhante ao que é feito com variáveis: `paraArray(): Negociacao[] { }`
 - se `noImplicitAny` estiver habilitado, pode ser utilizada a inferência de tipos na declaração da variável: `private _negociacoes = new Negociacoes();`
-- herança em TypeScript é igual ao JavaScript, utilizando `class MensagemView extends View { }`, talvez esse seja uma momento para utilizar **protected**
+- herança em TypeScript é igual ao JavaScript, utilizando `class MensagemView extends View { }`, talvez esse seja um momento para utilizar **protected**
 - é possível utilizar `generics` através dos colchetes angulares na declaração da classe
 
 ```typescript
@@ -107,6 +107,33 @@ namespace Views {
 
 }
 ```
+
+- se um atributo da classe deve ser público e somente puder ser inicializado uma vez, é possível utilizare `readonly`
+
+```typescript
+export class Negociacao {
+
+    constructor(readonly data: Date, readonly quantidade: number, readonly valor: number) { }
+
+    // não é necessário criar getters para os atributos
+
+    get volume() {
+        return this.quantidade * this.valor;
+    }
+
+}
+```
+
+- para deixar um parâmetro opcional, utiliza-se `?`, ele deve ser o último parâmetro e pode existir mais de um, caso o parâmetro não seja informado, seu valor será `undefined`
+
+```typescript
+    constructor(seletor: string, escapar?: boolean) {
+        this._elemento = $(seletor);
+        this._escapar = escapar;
+    }
+```
+
+- para evitar o uso de `null` e `undefined`, pode ser informada a configuração `"strictNullChecks": true` no arquivo `tsconfig.json`.
 
 ## Referências
 
