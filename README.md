@@ -134,6 +134,36 @@ export class Negociacao {
 ```
 
 - para evitar o uso de `null` e `undefined`, pode ser informada a configuração `"strictNullChecks": true` no arquivo `tsconfig.json`.
+- para fazer com que uma função retorne `null` mesmo com `strictNullChecks` habilitado, deve-se deixar explícito no tipo de retorno da função
+
+```typescript
+    function minhaFuncao(flag: boolean): boolean | null{
+
+        let valor = null;
+        if(flag) return null;
+        return true;
+    }
+
+    let x = minhaFuncao(false);
+```
+
+- existe o tipo `never` que é aplicável à métodos ou funções que por algum motivo, planejado ou não, podem não terminar sua execução de seu bloco.
+- TypeScript possibilita a criação de enumerações
+
+```typescript
+    enum DiaDaSemana {
+        // 0
+        Domingo,
+        // 1
+        Segunda, // pode ser atribuído um valor, os demais itens serão incrementados a partir do valor anterior
+        // 2
+        Terca,
+        Quarta,
+        Quinta,
+        Sexta,
+        Sabado,
+    }
+```
 
 ## Referências
 
