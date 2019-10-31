@@ -6,6 +6,7 @@
         "noEmitOnError": true,
         "noImplicitAny": true,
         "module": "system",
+        "experimentalDecorators": true
     },
     "include": [
         "app/ts/**/*"
