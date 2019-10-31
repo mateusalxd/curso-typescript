@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
-    "start": "tsc -w"
+    "watch": "tsc -w",
+    "server": "lite-server --baseDir=app",
+    "start": "concurrently \"npm run watch\" \"npm run server\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,8 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jquery": "^2.0.42",
+    "concurrently": "^5.0.0",
+    "lite-server": "^2.5.4",
     "typescript": "^3.6.4"
   }
 }
