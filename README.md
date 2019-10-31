@@ -86,6 +86,30 @@ ou
 declare var $: any;
 ```
 
+- é possível organizar os arquivos através de *namespace*
+
+```typescript
+// equivalente a module Views { } de versões anteriores ao TypeScript 1.5
+namespace Views {
+
+    // dá um apelido para Views.View
+    import View = Views.View;
+
+    // necessário o uso de export
+    // utiliza o apelido View no extends
+    export class MensagemView extends View<string> {
+
+        template(modelo: string): string {
+            return `<p class='alert alert-info'>${modelo}</p>`;
+        }
+
+    }
+
+}
+```
+
 ## Referências
 
 [Curso de TypeScript parte 1: Evoluindo seu Javascript](https://www.alura.com.br/curso-online-typescript-parte1)
+
+[Curso de TypeScript parte 2: Mais técnicas e boas práticas](https://www.alura.com.br/curso-online-typescript-parte2)
