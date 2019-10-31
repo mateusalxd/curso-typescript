@@ -165,6 +165,50 @@ export class Negociacao {
     }
 ```
 
+- JavaScript disponibiliza um objeto global que pode ser utilizado para verificação de performance
+
+```typescript
+    meuMetodo(event: Event) {
+        const t1 = performance.now();
+        // código omitido
+        const t2 = performance.now();
+        console.log(`Tempo de execução do método adiciona(): ${(t2 - t1)/1000} segundos`);
+    }
+```
+
+- é possível utilizar um decorator habilitando no `tsconfig.json` através de `"experimentalDecorators": true`, a função do decorator deve retornar outra função. Para utilizar o decorator em um método utilize `@nomeDoDecorator()` acima do método. Também é possível utilizar em atributos e classes.
+
+```typescript
+export function logarTempoDeExecucao(emSegundos: boolean = false) {
+
+    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+
+        const metodoOriginal = descriptor.value;
+
+        // sobrescreve o método original
+        descriptor.value = function (...args: any[]): any {
+            let divisor = 1;
+            let unidade = 'ms';
+            if (emSegundos) {
+                divisor = 1000;
+                unidade = 's';
+            }
+
+            const t1 = performance.now();
+            // executa o método original salvo anteriormente
+            const resultado = metodoOriginal.apply(this, args);
+            const t2 = performance.now();
+
+            console.log(`- Método: ${propertyKey}\n- Parâmetros: ${JSON.stringify(args)}\n- Tempo: ${(t2 - t1) / divisor} ${unidade}`);
+            return resultado
+        }
+
+        return descriptor;
+    }
+
+}
+```
+
 ## Referências
 
 [Curso de TypeScript parte 1: Evoluindo seu Javascript](https://www.alura.com.br/curso-online-typescript-parte1)
