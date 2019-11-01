@@ -133,7 +133,7 @@ export class Negociacao {
     }
 ```
 
-- para evitar o uso de `null` e `undefined`, pode ser informada a configuração `"strictNullChecks": true` no arquivo `tsconfig.json`.
+- para evitar o uso de `null` e `undefined`, pode ser informada a configuração `"strictNullChecks": true` no arquivo `tsconfig.json`
 - para fazer com que uma função retorne `null` mesmo com `strictNullChecks` habilitado, deve-se deixar explícito no tipo de retorno da função
 
 ```typescript
@@ -147,7 +147,7 @@ export class Negociacao {
     let x = minhaFuncao(false);
 ```
 
-- existe o tipo `never` que é aplicável à métodos ou funções que por algum motivo, planejado ou não, podem não terminar sua execução de seu bloco.
+- existe o tipo `never` que é aplicável à métodos ou funções que por algum motivo, planejado ou não, podem não terminar sua execução de seu bloco
 - TypeScript possibilita a criação de enumerações
 
 ```typescript
@@ -176,7 +176,7 @@ export class Negociacao {
     }
 ```
 
-- é possível utilizar um decorator habilitando no `tsconfig.json` através de `"experimentalDecorators": true`, a função do decorator deve retornar outra função. Para utilizar o decorator em um método utilize `@nomeDoDecorator()` acima do método. Também é possível utilizar em atributos e classes.
+- é possível utilizar um decorator habilitando no `tsconfig.json` através de `"experimentalDecorators": true`, a função do decorator deve retornar outra função. Para utilizar o decorator em um método utilize `@nomeDoDecorator()` acima do método. Também é possível utilizar em atributos e classes
 
 ```typescript
 export function logarTempoDeExecucao(emSegundos: boolean = false) {
@@ -215,6 +215,12 @@ export function logarTempoDeExecucao(emSegundos: boolean = false) {
 export interface NegociacaoParcial {
     vezes: number,
     montante: number;
+}
+
+// pode ser utilizado para definição de funções também
+export interface ResponseHandler {
+    // a função deve receber um Response e retornar um Response
+    (res: Response): Response
 }
 ```
 
