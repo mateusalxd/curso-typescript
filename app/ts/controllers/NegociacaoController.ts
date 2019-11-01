@@ -2,7 +2,7 @@ import { NegociacoesView, MensagemView } from '../views/index';
 import { Negociacao, Negociacoes, NegociacaoParcial } from "../models/index";
 import { domInject, throttle } from '../helpers/decorators/index';
 import { NegociacaoService } from '../services/index';
-import { imprime } from '../helpers/Utils';
+import { imprime } from '../helpers/index';
 
 export class NegociacaoController {
 
