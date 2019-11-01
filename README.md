@@ -108,7 +108,7 @@ namespace Views {
 }
 ```
 
-- se um atributo da classe deve ser público e somente puder ser inicializado uma vez, é possível utilizare `readonly`
+- se um atributo da classe deve ser público e somente puder ser inicializado uma vez, é possível utilizar `readonly`
 
 ```typescript
 export class Negociacao {
@@ -147,7 +147,7 @@ export class Negociacao {
     let x = minhaFuncao(false);
 ```
 
-- existe o tipo `never` que é aplicável à métodos ou funções que por algum motivo, planejado ou não, podem não terminar sua execução de seu bloco
+- existe o tipo `never` que é aplicável a métodos ou funções que por algum motivo, planejado ou não, podem não terminar sua execução de seu bloco
 - TypeScript possibilita a criação de enumerações
 
 ```typescript
@@ -165,7 +165,7 @@ export class Negociacao {
     }
 ```
 
-- JavaScript disponibiliza um objeto global que pode ser utilizado para verificação de performance
+- JavaScript disponibiliza um objeto global que pode ser utilizado para verificação de desempenho
 
 ```typescript
     meuMetodo(event: Event) {
@@ -217,11 +217,58 @@ export interface NegociacaoParcial {
     montante: number;
 }
 
-// pode ser utilizado para definição de funções também
+// pode ser utilizada para definição de funções também
 export interface ResponseHandler {
     // a função deve receber um Response e retornar um Response
     (res: Response): Response
 }
+
+// pode ser utilizada para definição de função que deverão ser implementadas em outras classes
+export interface Imprimivel {
+    // a função deve ter o nome paraTexto, não receber nenhum parâmetro e retornar void
+    paraTexto(): void;
+
+}
+
+// interfaces podem estender mais de uma interface, diferente de classes que só podem extender uma única classe
+export interface MeuObjeto<T> extends Imprimivel, Igualavel<T>  { }
+```
+
+- é possível receber mais de um tipo de parâmetro em uma função utilizando `|`
+
+```typescript
+    // pode ser criado um alias para union types
+    type MeuToken = string |  number;
+
+    // Union Types é o nome dado a esta característica de receber mais de um parâmetro
+    // no lugar de string | number na função abaixo, poderia ser utilizado o alias MeuToken
+    function processaToken(token: string | number) {
+        // Type Guards é o nome dado a esta característica de verificar o tipo de dado do parâmetro
+        // é preferível polimorfismo caso exista a possibilidade
+        if(typeof(token) === 'string') {
+            return token.replace(/2/g,'X');
+        } else {
+            return token.toFixed().replace(/2/g,'X');
+        }
+    }
+```
+
+- é possível criar funções assíncronas através de `async`, porém é necessário que dentro da função exista o `await` que irá indicar o ponto de retorno após o processamento assíncrono
+
+```typescript
+    async importarDados() {
+
+        ...
+
+        try {
+            const negociacoesParaImportar = await this._service.obterNegociacoes(isOk);
+
+            ...
+
+        } catch (err) {
+            ...
+        }
+    }
 ```
 
 ## Referências
